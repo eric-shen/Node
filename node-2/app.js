@@ -17,7 +17,7 @@ fs.readFile('./node-2/readme.txt',function (err,data) {
 //     else console.log('写文件操作成功');
 // });
 fs.open('./node-2/readme.txt','r',function (err,fd) {
-   console.log("22222222222");
+   //console.log("22222222222");
     console.log(fd);
 });
 

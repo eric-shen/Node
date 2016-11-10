@@ -22,7 +22,31 @@ Node中的fs模块实现有关文件及目录的创建，写入及删除操作
      appendFileSync(filename,data,[option]);------------------------------------------2
 
 2-1-2
-    指定位置处开始读写文件
-    fs.open(filename,flags,[mode],callback)
-    callback(err,fd)
-    fd-打开文件返回的文件描述符
+    指定位置处开始读写文件fs.open(filename,flags,[mode],callback)
+    callback(err,fd)fd:打开文件返回的文件描述符
+    同步读写文件fs.openSync(filename,flags,[mode])返回被打开的文件描述符
+
+    从文件指定位置读取文件，一直读到文件底部，然后将读取到问内容放到一个缓存区中：fs.read(fd,buffer,offset,length,position,callback)
+    callback(err,bytesRead,buffer)
+    bytesRead实际读取的字节数，buffer;被读取的缓存区对象
+    同步方式打开文件readSync(fd,buffer,offset,length,position)
+
+    从缓存区中读取数据并且从文件的指定处开始写入这些数据:
+    fs.write(fd,buffer,offset,length,position,callback)
+    callback(err,written,buffer):written代表写入的字节数，被读取的缓存对象
+    同步方式写入文件:
+    fs.writeSync(fd,buffer,offset,length,position);
+
+    关闭文件
+    fs.close(fd,[callback])
+    callback(err)
+    同步方式关闭fs.closeSync(fd)
+
+    内存缓冲区中的剩余数据全部写入文件
+    fs.fsync(fd,[callback])
+    同步方式对文件进行同步操作
+    fs.fsyncSync(fd)
+
+
+2-2 创建和读取目录
+
